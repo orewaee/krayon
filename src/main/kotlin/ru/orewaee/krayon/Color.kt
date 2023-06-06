@@ -1,4 +1,4 @@
-package ru.orewaee
+package ru.orewaee.krayon
 
 enum class Color(val code: Int) {
     BLACK(30),

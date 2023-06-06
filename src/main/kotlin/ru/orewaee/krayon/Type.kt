@@ -1,4 +1,4 @@
-package ru.orewaee
+package ru.orewaee.krayon
 
 enum class Type(val difference: Int) {
     FG(0),

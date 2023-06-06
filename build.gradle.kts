@@ -1,5 +1,5 @@
 plugins {
-    application
+    java
 
     kotlin("jvm") version "1.8.21"
 
@@ -14,7 +14,13 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("stdlib-jdk8"))
+}
 
+tasks {
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
 }
 
 publishing {
