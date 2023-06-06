@@ -2,6 +2,8 @@ plugins {
     application
 
     kotlin("jvm") version "1.8.21"
+
+    `maven-publish`
 }
 
 group = "ru.orewaee"
@@ -15,4 +17,14 @@ dependencies {
 
 }
 
-application.mainClass.set("KrayonKt")
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "ru.orewaee"
+            artifactId = "krayon"
+            version = "1.0.0"
+
+            from(components["java"])
+        }
+    }
+}
