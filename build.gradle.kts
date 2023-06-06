@@ -15,4 +15,4 @@ dependencies {
 
 }
 
-application.mainClass.set("MainKt")
+application.mainClass.set("KrayonKt")
