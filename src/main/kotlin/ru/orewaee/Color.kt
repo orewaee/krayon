@@ -1,3 +1,5 @@
+package ru.orewaee
+
 enum class Color(val code: Int) {
     BLACK(30),
     RED(31),

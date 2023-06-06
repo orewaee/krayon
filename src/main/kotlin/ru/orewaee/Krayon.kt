@@ -1,3 +1,5 @@
+package ru.orewaee
+
 const val ESCAPE = "\u001b"
 const val RESET = "$ESCAPE[0m"
 

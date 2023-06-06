@@ -1,3 +1,5 @@
+package ru.orewaee
+
 data class RGB(
     val r: Int,
     val g: Int,
