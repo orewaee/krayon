@@ -4,9 +4,6 @@
 build/
 out/
 
-gradlew
-gradlew.bat
-
 *.war
 *.nar
 *.ear

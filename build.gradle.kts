@@ -1,6 +1,4 @@
 plugins {
-    java
-
     kotlin("jvm") version "1.8.21"
 
     `maven-publish`
@@ -13,15 +11,7 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-}
-
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
-}
+dependencies {}
 
 publishing {
     publications {
