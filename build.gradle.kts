@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "ru.orewaee"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -15,10 +15,10 @@ dependencies {}
 
 publishing {
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("release") {
             groupId = "ru.orewaee"
             artifactId = "krayon"
-            version = "1.0.0"
+            version = "1.0.1"
 
             from(components["java"])
         }
