@@ -18,21 +18,23 @@ object Krayon {
         type: Type = Type.FOREGROUND
     ) = generate("${38 + type.difference};2;$red;$green;$blue")
 
+    fun hex(
+        hex: String,
+        type: Type = Type.FOREGROUND
+    ): String {
+        val pattern = Regex("#[0-9A-Fa-f]{6}")
+
+        if (!(hex matches pattern)) return RESET
+
+        return rgb(
+            hex.slice(1..2).toInt(16),
+            hex.slice(3..4).toInt(16),
+            hex.slice(5..6).toInt(16),
+            type
+        )
+    }
+
     fun format(
         vararg format: Format
     ) = format.joinToString("") { generate("${it.code}") }
 }
-
-fun String.color(
-    color: Color,
-    type: Type = Type.FOREGROUND
-) = Krayon.color(color, type) + "$this$RESET"
-
-fun String.rgb(
-    red: Int, green: Int, blue: Int,
-    type: Type = Type.FOREGROUND
-) = Krayon.rgb(red, green, blue, type) + "$this$RESET"
-
-fun String.format(
-    vararg format: Format
-) = Krayon.format(*format) + "$this$RESET"
