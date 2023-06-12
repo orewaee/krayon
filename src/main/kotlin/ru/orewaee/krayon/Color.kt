@@ -17,5 +17,7 @@ enum class Color(val code: Int) {
     BRIGHT_BLUE(94),
     BRIGHT_MAGENTA(95),
     BRIGHT_CYAN(96),
-    BRIGHT_WHITE(97)
+    BRIGHT_WHITE(97);
+
+    override fun toString() = "$ESCAPE[${code}m"
 }
