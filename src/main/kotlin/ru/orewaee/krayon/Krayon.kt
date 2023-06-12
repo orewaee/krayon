@@ -1,50 +1,26 @@
 package ru.orewaee.krayon
 
-const val ESCAPE = "\u001b"
-const val RESET = "$ESCAPE[0m"
+private fun generate(body: String) = "$ESCAPE[${body}m"
 
 object Krayon {
-    private fun generate(body: String) = "$ESCAPE[${body}m"
+    fun color(color: Color, type: Type = Type.FOREGROUND) =
+        generate("${color.code + type.difference}")
 
-    /**
-     * @return standard color code
-     * */
-    fun color(
-        color: Color,
-        type: Type = Type.FOREGROUND
-    ) = generate("${color.code + type.difference}")
+    fun rgb(red: Int, green: Int, blue: Int, type: Type = Type.FOREGROUND) =
+        generate("${38 + type.difference};2;$red;$green;$blue")
 
-    /**
-     * @return RGB color code
-     * */
-    fun rgb(
-        red: Int, green: Int, blue: Int,
-        type: Type = Type.FOREGROUND
-    ) = generate("${38 + type.difference};2;$red;$green;$blue")
-
-    /**
-     * @return hex color code
-     * */
-    fun hex(
-        hex: String,
-        type: Type = Type.FOREGROUND
-    ): String {
+    fun hex(hex: String, type: Type = Type.FOREGROUND): String {
         val pattern = Regex("#[0-9A-Fa-f]{6}")
 
         if (!hex.matches(pattern)) return RESET
 
-        return rgb(
-            hex.slice(1..2).toInt(16),
-            hex.slice(3..4).toInt(16),
-            hex.slice(5..6).toInt(16),
-            type
-        )
+        val red = hex.slice(1..2).toInt(16)
+        val green = hex.slice(3..4).toInt(16)
+        val blue = hex.slice(5..6).toInt(16)
+
+        return rgb(red, green, blue, type)
     }
 
-    /**
-     * @return formatting code
-     * */
-    fun format(
-        vararg format: Format
-    ) = format.joinToString("") { generate("${it.code}") }
+    fun format(vararg format: Format) =
+        format.joinToString("") { generate("${it.code}") }
 }

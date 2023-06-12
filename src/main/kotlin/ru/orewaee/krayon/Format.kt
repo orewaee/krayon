@@ -9,5 +9,7 @@ enum class Format(val code: Int) {
     RAPID_BLINK(6),
     REVERSE(7),
     HIDE(8),
-    STRIKE(9)
+    STRIKE(9);
+
+    override fun toString() = "$ESCAPE[${code}m"
 }
